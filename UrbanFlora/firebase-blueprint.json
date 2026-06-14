@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique user ID" },
+        "name": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "format": "email", "description": "Email address of the user" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user account was registered" }
+      },
+      "required": ["uid", "name", "email", "createdAt"]
+    },
+    "Plant": {
+      "title": "Plant",
+      "description": "A plant object detected or cataloged in the database",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of the plant document" },
+        "name": { "type": "string", "description": "Common name of the plant" },
+        "scientificName": { "type": "string", "description": "Scientific name of the plant" },
+        "lat": { "type": "number", "description": "Latitude coordinate on the map" },
+        "lng": { "type": "number", "description": "Longitude coordinate on the map" },
+        "rarity": { "type": "number", "description": "Rarity tier" },
+        "category": { "type": "string", "description": "Plant category" },
+        "scope": { "type": "string", "enum": ["local", "turkey", "global"], "description": "Geographical scope" },
+        "distance": { "type": "string", "description": "Distance string" },
+        "date": { "type": "string", "description": "Identification date" },
+        "image": { "type": "string", "description": "URL to the image" },
+        "desc": { "type": "string", "description": "Description of the plant" },
+        "habitat": { "type": "string", "description": "Botanical habitat" },
+        "features": { "type": "string", "description": "Botanical features" },
+        "uploader": {
+          "type": "object",
+          "description": "Information about the user who uploaded"
+        },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp" },
+        "ownerId": { "type": "string", "description": "UID of the owner who uploaded the plant" }
+      },
+      "required": ["id", "name", "scientificName", "category", "image", "desc", "ownerId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User accounts"
+    },
+    "plants/{plantId}": {
+      "schema": "Plant",
+      "description": "Scanned and identified plants shared globally or added to map"
+    }
+  }
+}

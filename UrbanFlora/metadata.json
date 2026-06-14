@@ -1,0 +1,6 @@
+{
+  "name": "UrbanFlora",
+  "description": "Gerçekçi akıllı telefon çerçevesinde, tam etkileşimli UrbanFlora Doğa Kaşifi mobil uygulaması simülatörü.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
